@@ -20,7 +20,32 @@ mysqli_close($conn);
 
 <!DOCTYPE html>
 <html lang="pt-br">
-<?php include 'templates/header.php'; ?>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agenda</title>
+
+  <link rel="shortcut icon" href="https://cdn3.iconfinder.com/data/icons/galaxy-open-line-gradient-i/200/account-256.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  <style>
+    body {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #move-up {
+      position: relative;
+      top: 0;
+      transition: top ease 150ms;
+    }
+
+    #move-up:hover {
+      top: -5px;
+    }
+  </style>
+</head>
 
 <body style="width: initial; height: initial; overflow: initial;">
   <header class="my-4 d-flex justify-content-between align-items-center">
@@ -36,32 +61,36 @@ mysqli_close($conn);
   <section id="top-bar" class="my-3 d-flex justify-content-between align-items-center">
     <a href="cadastrar-pessoas.php" class="btn btn-info ml-4">Cadastrar pessoas</a>
     <ul class="m-0 ml-3 list-unstyled">
-      <li class="d-inline font-weight-bold"><a href="#" class="text-decoration-none">A | </a></li>
-      <li class="d-inline font-weight-bold"><a href="#" class="text-decoration-none">B | </a></li>
-      <li class="d-inline font-weight-bold"><a href="#" class="text-decoration-none">C | </a></li>
-      <li class="d-inline font-weight-bold"><a href="#" class="text-decoration-none">D | </a></li>
-      <li class="d-inline font-weight-bold"><a href="#" class="text-decoration-none">E | </a></li>
-      <li class="d-inline font-weight-bold"><a href="#" class="text-decoration-none">F | </a></li>
-      <li class="d-inline font-weight-bold"><a href="#" class="text-decoration-none">G | </a></li>
-      <li class="d-inline font-weight-bold"><a href="#" class="text-decoration-none">H | </a></li>
-      <li class="d-inline font-weight-bold"><a href="#" class="text-decoration-none">I | </a></li>
-      <li class="d-inline font-weight-bold"><a href="#" class="text-decoration-none">J | </a></li>
-      <li class="d-inline font-weight-bold"><a href="#" class="text-decoration-none">K | </a></li>
-      <li class="d-inline font-weight-bold"><a href="#" class="text-decoration-none">L | </a></li>
-      <li class="d-inline font-weight-bold"><a href="#" class="text-decoration-none">M | </a></li>
-      <li class="d-inline font-weight-bold"><a href="#" class="text-decoration-none">N | </a></li>
-      <li class="d-inline font-weight-bold"><a href="#" class="text-decoration-none">O | </a></li>
-      <li class="d-inline font-weight-bold"><a href="#" class="text-decoration-none">P | </a></li>
-      <li class="d-inline font-weight-bold"><a href="#" class="text-decoration-none">Q | </a></li>
-      <li class="d-inline font-weight-bold"><a href="#" class="text-decoration-none">R | </a></li>
-      <li class="d-inline font-weight-bold"><a href="#" class="text-decoration-none">S | </a></li>
-      <li class="d-inline font-weight-bold"><a href="#" class="text-decoration-none">T | </a></li>
-      <li class="d-inline font-weight-bold"><a href="#" class="text-decoration-none">U | </a></li>
-      <li class="d-inline font-weight-bold"><a href="#" class="text-decoration-none">V | </a></li>
-      <li class="d-inline font-weight-bold"><a href="#" class="text-decoration-none">W | </a></li>
-      <li class="d-inline font-weight-bold"><a href="#" class="text-decoration-none">X | </a></li>
-      <li class="d-inline font-weight-bold"><a href="#" class="text-decoration-none">Y | </a></li>
-      <li class="d-inline font-weight-bold"><a href="#" class="text-decoration-none">Z | </a></li>
+      <?php
+        include('config/conecta.php');
+        $alfabeto = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+
+        $letrasExistentes = mysqli_query($conn, "SELECT DISTINCT LEFT(nome, 1) AS letra FROM pessoa ORDER BY letra");
+        $iniciais = mysqli_fetch_all($letrasExistentes, MYSQLI_ASSOC);
+
+        echo "<span class='text-info' style='cursor: default;'> | </span>";
+        foreach($alfabeto as $letra){
+          foreach($iniciais as $inicial){
+            if($inicial['letra'] == $letra){
+              echo "<li class='d-inline font-weight-bold'><a href='#' id='move-up' class='text-decoration-none'>$letra</a></li>";
+            }
+          }
+          $c = 0;
+          foreach($iniciais as $inicial){
+            if($inicial['letra'] != $letra){
+              $c++;
+            }
+          }
+          if($c == count($iniciais)){
+            echo "<li class='d-inline'><a href='#' id='move-up' class='text-decoration-none text-secondary' style='cursor: default;'>$letra</a></li>";
+          }
+          echo "<span class='text-info' style='cursor: default;'> | </span>";
+        }
+
+        // LIBERAR MEMÓRIA
+        mysqli_free_result($letrasExistentes);
+        mysqli_close($conn);
+      ?>
     </ul>
     <form action="config/procurar.php" method="GET" class="mr-4">
       <div class="input-group">
