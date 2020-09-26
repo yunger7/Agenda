@@ -20,6 +20,8 @@ if(isset($_POST['submit'])){
   $profissao = $_POST['profissao'];
   $tipo = $_POST['tipo'];
 
+  // VERIFICAR SE EXISTE REGISTRO NO BANCO
+
   $sql = "UPDATE pessoa SET tipo = '$tipo', nome = '$nome', endereco = '$endereco', cidade = '$cidade', estado = '$estado', celular = '$celular', email = '$email', datanascimento = '$dataNascimento', profissao = '$profissao' WHERE id = '$idEditar'";
 
   if(mysqli_query($conn, $sql)){
