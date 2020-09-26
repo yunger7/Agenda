@@ -4,7 +4,7 @@
 <?php include 'templates/header.php'; ?>
 
 <body>
-  <header class="text-center my-3">
+  <header class="text-center mt-5 mb-3">
     <h1 class="h3">Sistema de Agenda</h1>
   </header>
   <section class="my-4 mx-auto position-relative d-flex flex-column align-items-center justify-content-center rounded" style="width: 60vw; max-width: 700px; height: 60vh; max-height: 500px; padding: 100px; background-color: #f3f5f7;">
