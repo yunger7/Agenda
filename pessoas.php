@@ -108,7 +108,7 @@ mysqli_close($conn);
   </section>
   <hr class="m-0">
   <main>
-    <table class="table table-hover text-center mb-0">
+    <table class="table table-hover text-center mb-0 border">
       <thead>
         <tr>
           <th scope="col">Tipo</th>
