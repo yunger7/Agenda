@@ -7,9 +7,9 @@ if ($_SESSION["status"] != "ok") {
 
 include('conecta.php');
 
-// PESQUISAR PESSOA
-$nome = $_GET['nome-procurar'];
-$sql = "SELECT id, tipo, nome, celular, email FROM pessoa WHERE nome LIKE '%$nome%' ";
+// PESQUISAR PESSOAS
+$letra = $_GET['letra'];
+$sql = "SELECT id, tipo, nome, celular, email FROM pessoa WHERE nome LIKE '$letra%' ";
 $resultado = mysqli_query($conn, $sql);
 $pessoas = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
 
@@ -36,7 +36,7 @@ mysqli_close($conn);
     <?php include '../templates/menu.php'; ?>
   </nav>
   <section id="top-bar" class="text-center">
-    <h1 class="h3 my-3">Pesquisa por nome</h1>
+    <h1 class="h3 my-3">Pesquisa por letra</h1>
   </section>
   <hr class="m-0">
   <main>

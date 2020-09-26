@@ -72,7 +72,7 @@ mysqli_close($conn);
         foreach($alfabeto as $letra){
           foreach($iniciais as $inicial){
             if($inicial['letra'] == $letra){
-              echo "<li class='d-inline font-weight-bold'><a href='#' id='move-up' class='text-decoration-none'>$letra</a></li>";
+              echo "<li class='d-inline font-weight-bold'><a href='config/procurar-letra.php?letra=$letra' id='move-up' class='text-decoration-none'>$letra</a></li>";
             }
           }
           $c = 0;
@@ -108,7 +108,7 @@ mysqli_close($conn);
   </section>
   <hr class="m-0">
   <main>
-    <table class="table table-hover text-center">
+    <table class="table table-hover text-center mb-0">
       <thead>
         <tr>
           <th scope="col">Tipo</th>
