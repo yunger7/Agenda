@@ -9,29 +9,45 @@ if ($_SESSION["status"] != "ok") {
 $idEditar = $_GET['id'] ?? $_POST['id-editar'];
 
 // EDITAR REGISTRO
-if(isset($_POST['submit'])){
+if (isset($_POST['submit'])) {
   $nome = $_POST['nome'];
   $login = $_POST['login'];
   $senha = $_POST['senha'];
   $tipo = $_POST['tipo'];
 
-  $sql = "UPDATE usuario SET nome = '$nome', login = '$login', senha = '$senha', tipo = '$tipo' WHERE id = '$idEditar'";
-
-  if(mysqli_query($conn, $sql)){
+  // VERIFICAR SE EXISTE REGISTRO NO BANCO
+  $usuario = mysqli_query($conn, "SELECT * FROM usuario WHERE nome = '$nome' AND login = '$login'");
+  if (mysqli_num_rows($usuario) > 0) {
+    // Já existe no banco
     echo "
       <script language = 'javascript' type='text/javascript'>
-        alert('Usuário editado com sucesso!');
+        alert('Esse usuário já está cadastrado!');
         window.location.href = '../usuarios.php';
-      </script>";
+      </script>
+    ";
+
+    mysqli_close($conn);
   } else {
-    echo "
-      <script language = 'javascript' type='text/javascript'>
-        alert('Não foi possível editar o usuário');
-        window.location.href = '../usuarios.php';
-      </script>";
-  }
+    // Não existe no banco
 
-  mysqli_close($conn);
+    $sql = "UPDATE usuario SET nome = '$nome', login = '$login', senha = '$senha', tipo = '$tipo' WHERE id = '$idEditar'";
+
+    if (mysqli_query($conn, $sql)) {
+      echo "
+        <script language = 'javascript' type='text/javascript'>
+          alert('Usuário editado com sucesso!');
+          window.location.href = '../usuarios.php';
+        </script>";
+    } else {
+      echo "
+        <script language = 'javascript' type='text/javascript'>
+          alert('Não foi possível editar o usuário');
+          window.location.href = '../usuarios.php';
+        </script>";
+    }
+  
+    mysqli_close($conn);
+  }
 }
 
 // BUSCAR REGISTROS
@@ -50,7 +66,7 @@ mysqli_close($conn);
 <?php include '../templates/header.php'; ?>
 
 <body style="width: initial; height: initial; overflow: initial;">
-<header class="my-4 d-flex justify-content-between align-items-center">
+  <header class="my-4 d-flex justify-content-between align-items-center">
     <h2 class="h4 ml-4"><span><img src="../images/agenda.svg" alt="Logo" width="50" height="50" class="mb-1 mr-2"></span>Sistema de Agenda</h2>
     <ul class="mr-4 list-unstyled">
       <li class="d-inline mr-2">Olá <?php echo $_SESSION["user"]; ?>!</li>
@@ -73,11 +89,11 @@ mysqli_close($conn);
       <input class="form-control mb-2" type="password" name="senha" id="senha" value="<?php echo $usuarioEditar['senha'] ?>" placeholder="Digite a senha" required>
       <label for="tipo-usuario" style="margin-bottom: 0.2em;">Tipo do usuário</label>
       <select class="custom-select mb-2" name="tipo" id="tipo-usuario" required>
-        <?php if($usuarioEditar['tipo'] == 'admin'){ ?>
+        <?php if ($usuarioEditar['tipo'] == 'admin') { ?>
           <option disabled>Selecione uma opção</option>
           <option value="admin" selected>Admin</option>
           <option value="normal">Normal</option>
-        <?php } elseif ($usuarioEditar['tipo'] == 'normal'){ ?>
+        <?php } elseif ($usuarioEditar['tipo'] == 'normal') { ?>
           <option disabled>Selecione uma opção</option>
           <option value="admin">Admin</option>
           <option value="normal" selected>Normal</option>

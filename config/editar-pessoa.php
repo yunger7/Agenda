@@ -21,26 +21,39 @@ if(isset($_POST['submit'])){
   $tipo = $_POST['tipo'];
 
   // VERIFICAR SE EXISTE REGISTRO NO BANCO
-
-  $sql = "UPDATE pessoa SET tipo = '$tipo', nome = '$nome', endereco = '$endereco', cidade = '$cidade', estado = '$estado', celular = '$celular', email = '$email', datanascimento = '$dataNascimento', profissao = '$profissao' WHERE id = '$idEditar'";
-
-  if(mysqli_query($conn, $sql)){
+  $pessoa = mysqli_query($conn, "SELECT * FROM pessoa WHERE nome = '$nome' AND email = '$email'");
+  if(mysqli_num_rows($pessoa) > 0){
+    // Já existe no banco
     echo "
       <script language='javascript' type='text/javascript'>
-        alert('Pessoa editada com sucesso!');
+        alert('Essa pessoa já está cadastrada');
         window.location.href = '../pessoas.php';
       </script>
     ";
-  } else {
-    echo "
-    <script language='javascript' type='text/javascript'>
-      alert('Houve um problema ao editar a pessoa');
-      window.location.href = '../pessoas.php';
-    </script>
-  ";
-  }
 
-  mysqli_close($conn);
+    mysqli_close($conn);
+  } else {
+    // Não existe no banco
+    $sql = "UPDATE pessoa SET tipo = '$tipo', nome = '$nome', endereco = '$endereco', cidade = '$cidade', estado = '$estado', celular = '$celular', email = '$email', datanascimento = '$dataNascimento', profissao = '$profissao' WHERE id = '$idEditar'";
+
+    if(mysqli_query($conn, $sql)){
+      echo "
+        <script language='javascript' type='text/javascript'>
+          alert('Pessoa editada com sucesso!');
+          window.location.href = '../pessoas.php';
+        </script>
+      ";
+    } else {
+      echo "
+      <script language='javascript' type='text/javascript'>
+        alert('Houve um problema ao editar a pessoa');
+        window.location.href = '../pessoas.php';
+      </script>
+    ";
+    }
+  
+    mysqli_close($conn);
+  }
 }
 
 // BUSCAR REGISTRO
