@@ -94,7 +94,7 @@ mysqli_close($conn);
     </ul>
     <form action="config/procurar.php" method="GET" class="mr-4">
       <div class="input-group">
-        <input type="text" name="nome-procurar" class="form-control" placeholder="Digite um nome">
+        <input type="text" name="nome-procurar" class="form-control" placeholder="Digite um nome" required>
         <div class="input-group-append">
           <button type="submit" class="btn btn-outline-info">
             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -108,7 +108,7 @@ mysqli_close($conn);
   </section>
   <hr class="m-0">
   <main>
-    <table class="table table-hover text-center mb-0">
+    <table class="table table-hover text-center mb-0 border">
       <thead>
         <tr>
           <th scope="col">Tipo</th>
