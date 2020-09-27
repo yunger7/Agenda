@@ -106,7 +106,7 @@ if ($_SESSION["status"] != "ok") {
             include('config/conecta.php');
 
             // Registros de aniversariantes do mês
-            $res = mysqli_query($conn, "SELECT nome FROM pessoa WHERE MONTH(datanascimento) = MONTH(CURDATE())");
+            $res = mysqli_query($conn, "SELECT nome, id FROM pessoa WHERE MONTH(datanascimento) = MONTH(CURDATE())");
             $aniversariantes = mysqli_fetch_all($res, MYSQLI_ASSOC);
 
             // mysqli_free_result($res);
@@ -119,7 +119,7 @@ if ($_SESSION["status"] != "ok") {
               <!-- Existem aniversariantes -->
               <ul>
                 <?php foreach ($aniversariantes as $aniversariante) : ?>
-                  <li><?php echo $aniversariante['nome']; ?></li>
+                  <li><a href="config/verpessoa.php?id=<?php echo $aniversariante['id']; ?>"><?php echo $aniversariante['nome']; ?></a></li>
                 <?php endforeach; ?>
               </ul>
               <p class="text-center mb-0" style="font-size: 2em;">&#127881;</p>
