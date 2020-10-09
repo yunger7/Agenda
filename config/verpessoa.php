@@ -88,7 +88,7 @@ mysqli_close($conn);
         </div>
       </form>
     </section>
-    <section id="mapa" class="w-75 mx-auto my-5 position-relative d-flex flex-column align-items-center justify-content-center" style="max-width: 1200px;">
+    <section id="localizacao" class="w-75 mx-auto my-5 position-relative d-flex flex-column align-items-center justify-content-center" style="max-width: 1200px;">
       <div id="top-bar" class="bg-info position-absolute fixed-top rounded-top d-flex align-items-center w-100 mx-auto" style="height: 50px;">
         <svg class="ml-3" style="color: white;" width="25px" height="25px" viewBox="0 0 16 16" class="bi bi-geo-alt" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" d="M12.166 8.94C12.696 7.867 13 6.862 13 6A5 5 0 0 0 3 6c0 .862.305 1.867.834 2.94.524 1.062 1.234 2.12 1.96 3.07A31.481 31.481 0 0 0 8 14.58l.208-.22a31.493 31.493 0 0 0 1.998-2.35c.726-.95 1.436-2.008 1.96-3.07zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
@@ -96,11 +96,39 @@ mysqli_close($conn);
         </svg>
         <h2 class="h4 text-center text-light m-0 ml-2 mb-1" style="font-size: 1.2em;">Localização de <?php echo $pessoa['nome']; ?></h2>
       </div>
-      <iframe class="w-100" style="position: relative; top: 50px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d29287.572154958154!2d-51.93828!3d-23.426299!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xca788375078d8bfc!2sCatedral%20Metropolitana%20Bas%C3%ADlica%20Menor%20Nossa%20Senhora%20da%20Gl%C3%B3ria!5e0!3m2!1sen!2sbr!4v1601154164736!5m2!1sen!2sbr" width="1200" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+      <div id="map" class="w-100" style="position: relative; top: 50px; max-width: 1200px; height: 450px;"></div>
     </section>
     <div class="spacer w-100" style="height: 100px;"></div>
   </main>
   <?php include('../templates/footer.php'); ?>
+
+  <!-- Geocoding -->
+  <!-- <script src="https://maps.googleapis.com/maps/api/geocode/json?address=<?php echo $pessoa['endereco']; ?>+<?php echo $pessoa['estado']; ?>+<?php echo $pessoa['estado']; ?>&components=country:BR
+&key=API_KEY"></script> -->
+
+  <!-- Google Maps API -->
+  <!-- <script>
+    function initMap() {
+      var location = {
+        lat: -25.344,
+        lng: 131.036
+      };
+
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 4,
+        center: location
+      });
+
+      var marker = new google.maps.Marker({
+        position: location,
+        map: map
+      });
+    }
+  </script>
+
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=API_KEY(Tirei minha API Key, mas estava funcionando corretamente)&callback=initMap" type="text/javascript"></script> -->
+
+
 </body>
 
 </html>

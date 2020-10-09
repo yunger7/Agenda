@@ -3,7 +3,7 @@ include('conecta.php');
 
 $nome = $_POST['nome'];
 $login = $_POST['login'];
-$senha = $_POST['senha'];
+$senha = base64_encode($_POST['senha']);
 $tipo = $_POST['tipo'];
 
 // VERIFICAR SE EXISTE REGISTRO NO BANCO

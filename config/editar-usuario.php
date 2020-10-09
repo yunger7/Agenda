@@ -12,11 +12,11 @@ $idEditar = $_GET['id'] ?? $_POST['id-editar'];
 if (isset($_POST['submit'])) {
   $nome = $_POST['nome'];
   $login = $_POST['login'];
-  $senha = $_POST['senha'];
+  $senha = base64_encode($_POST['senha']);
   $tipo = $_POST['tipo'];
 
   // VERIFICAR SE EXISTE REGISTRO NO BANCO
-  $usuario = mysqli_query($conn, "SELECT * FROM usuario WHERE nome = '$nome' AND login = '$login'");
+  $usuario = mysqli_query($conn, "SELECT * FROM usuario WHERE nome = '$nome' AND login = '$login' AND senha = '$senha'");
   if (mysqli_num_rows($usuario) > 0) {
     // Já existe no banco
     echo "
