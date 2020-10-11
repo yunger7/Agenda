@@ -21,7 +21,7 @@ if(isset($_POST['submit'])){
   $tipo = $_POST['tipo'];
 
   // VERIFICAR SE EXISTE REGISTRO NO BANCO
-  $pessoa = mysqli_query($conn, "SELECT * FROM pessoa WHERE nome = '$nome' AND email = '$email'");
+  $pessoa = mysqli_query($conn, "SELECT * FROM pessoa WHERE nome = '$nome' AND email = '$email' AND endereco = '$endereco' AND cidade = '$cidade' AND estado = '$estado' AND celular = '$celular' AND datanascimento = '$dataNascimento' AND profissao = '$profissao' AND tipo = '$tipo'");
   if(mysqli_num_rows($pessoa) > 0){
     // Já existe no banco
     echo "

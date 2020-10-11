@@ -138,7 +138,7 @@ if ($_SESSION["status"] != "ok") {
             </div>
           </section>
           <section id="pesquisa" class="bg-light h-100 p-3" style="position: relative; top: 50px;">
-            <form action="config/procurar.php" method="GET" class="text-center">
+            <form action="pessoas.php" method="GET" class="text-center">
               <div class="input-group">
                 <input type="text" name="nome-procurar" class="form-control" placeholder="Digite um nome" required>
                 <div class="input-group-append">
@@ -165,10 +165,10 @@ if ($_SESSION["status"] != "ok") {
                   if ($inicial['letra'] == $letra) {
                     if ($gridCount == 0) {
                       echo "<div class='row mb-2'>";
-                      echo "<div class='col-3 text-center'><a href='config/procurar-letra.php?letra=$letra' class='text-decoration-none btn btn-primary w-100'>$letra</a></div>";
+                      echo "<div class='col-3 text-center'><a href='pessoas.php?letra=$letra' class='text-decoration-none btn btn-primary w-100'>$letra</a></div>";
                       $gridCount++;
                     } else if ($gridCount < 4) {
-                      echo "<div class='col-3 text-center'><a href='config/procurar-letra.php?letra=$letra' class='text-decoration-none btn btn-primary w-100'>$letra</a></div>";
+                      echo "<div class='col-3 text-center'><a href='pessoas.php?letra=$letra' class='text-decoration-none btn btn-primary w-100'>$letra</a></div>";
                       $gridCount++;
                     } else {
                       echo "</div>";
