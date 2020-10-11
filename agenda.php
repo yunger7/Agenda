@@ -167,10 +167,11 @@ if ($_SESSION["status"] != "ok") {
                       echo "<div class='row mb-2'>";
                       echo "<div class='col-3 text-center'><a href='pessoas.php?letra=$letra' class='text-decoration-none btn btn-primary w-100'>$letra</a></div>";
                       $gridCount++;
-                    } else if ($gridCount < 4) {
+                    } else if ($gridCount < 3) {
                       echo "<div class='col-3 text-center'><a href='pessoas.php?letra=$letra' class='text-decoration-none btn btn-primary w-100'>$letra</a></div>";
                       $gridCount++;
                     } else {
+                      echo "<div class='col-3 text-center'><a href='pessoas.php?letra=$letra' class='text-decoration-none btn btn-primary w-100'>$letra</a></div>";
                       echo "</div>";
                       $gridCount = 0;
                     }
@@ -187,10 +188,11 @@ if ($_SESSION["status"] != "ok") {
                     echo "<div class='row mb-2'>";
                     echo "<div class='col-3 text-center'><a href='#' id='move-up' class='text-decoration-none btn btn-secondary w-100' style='cursor: default;'>$letra</a></div>";
                     $gridCount++;
-                  } else if ($gridCount < 4) {
+                  } else if ($gridCount < 3) {
                     echo "<div class='col-3 text-center'><a href='#' id='move-up' class='text-decoration-none btn btn-secondary w-100' style='cursor: default;'>$letra</a></div>";
                     $gridCount++;
                   } else {
+                    echo "<div class='col-3 text-center'><a href='#' id='move-up' class='text-decoration-none btn btn-secondary w-100' style='cursor: default;'>$letra</a></div>";
                     echo "</div>";
                     $gridCount = 0;
                   }
