@@ -158,43 +158,69 @@ if ($_SESSION["status"] != "ok") {
           // nome está vazio
           $sql = "SELECT id, tipo, nome, celular, email FROM pessoa ORDER BY nome";
           break;
-      } 
+      }
       // PESQUISA NO BANCO
       include('config/conecta.php');
-      $res = mysqli_query($conn, $sql);
-      $pessoas = mysqli_fetch_all($res, MYSQLI_ASSOC);
 
-      mysqli_free_result($res);
+      $res = mysqli_query($conn, $sql);
+
+      if (mysqli_num_rows($res) == 0) {
+        // não existe registros
+        $existe = 0;
+      } else {
+        // existe registros
+        $existe = 1;
+        $pessoas = mysqli_fetch_all($res, MYSQLI_ASSOC);
+        mysqli_free_result($res);
+      }
+
       mysqli_close($conn);
 
-      ?>
+    ?>
       <!-- Tabela resultado -->
+      <?php if ($existe === 0) { ?>
+      <!-- Não existe resultados -->
       <table class="table table-hover text-center mb-0 border">
-      <thead>
-        <tr>
-          <th scope="col">Tipo</th>
-          <th scope="col">Nome</th>
-          <th scope="col">Celular</th>
-          <th scope="col">Email</th>
-          <th scope="col">Ações</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php foreach($pessoas as $pessoa): ?>
+        <thead>
           <tr>
-            <td><?php echo $pessoa['tipo']; ?></td>
-            <td><?php echo $pessoa['nome']; ?></td>
-            <td><?php echo $pessoa['celular']; ?></td>
-            <td><?php echo $pessoa['email']; ?></td>
-            <td>
-              <a href="config/verpessoa.php?id=<?php echo $pessoa['id']?>" class="btn btn-primary">Ver</a>
-              <a href="config/editar-pessoa.php?id=<?php echo $pessoa['id']; ?>" class="btn btn-info">Editar</a>
-              <a href="config/excluir-pessoa.php?id=<?php echo $pessoa['id']; ?>" class="btn btn-danger">Excluir</a>
-            </td>
+            <th scope="col">Tipo</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Celular</th>
+            <th scope="col">Email</th>
+            <th scope="col">Ações</th>
           </tr>
-        <?php endforeach; ?>
-      </tbody>
-    </table>
+        </thead>
+      </table>
+      <p class="text-center h5 mt-4">Não foram encontrados resultados para sua busca ＞﹏＜</p>
+      <?php } else { ?>
+      <!-- Existe resultados -->
+      <table class="table table-hover text-center mb-0 border">
+        <thead>
+          <tr>
+            <th scope="col">Tipo</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Celular</th>
+            <th scope="col">Email</th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php foreach ($pessoas as $pessoa) : ?>
+            <tr>
+              <td><?php echo $pessoa['tipo']; ?></td>
+              <td><?php echo $pessoa['nome']; ?></td>
+              <td><?php echo $pessoa['celular']; ?></td>
+              <td><?php echo $pessoa['email']; ?></td>
+              <td>
+                <a href="config/verpessoa.php?id=<?php echo $pessoa['id'] ?>" class="btn btn-primary">Ver</a>
+                <a href="config/editar-pessoa.php?id=<?php echo $pessoa['id']; ?>" class="btn btn-info">Editar</a>
+                <a href="config/excluir-pessoa.php?id=<?php echo $pessoa['id']; ?>" class="btn btn-danger">Excluir</a>
+              </td>
+            </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
+      <?php } ?>
     <?php } ?>
 
   </main>
