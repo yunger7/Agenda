@@ -25,7 +25,7 @@ if ($_SESSION["status"] != "ok") {
       <div class="row mb-2">
         <div class="col-4"></div>
         <div class="col-4">
-          <h1 class="h3">Bem-vindo(a) <?php echo $_SESSION['user']; ?>!</h1>
+          <h1 class="h4 ml-5">Bem-vindo(a) <?php echo $_SESSION['user']; ?>!</h1>
         </div>
         <div class="col-4"></div>
       </div>

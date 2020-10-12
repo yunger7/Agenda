@@ -12,6 +12,7 @@ if ($current_file === 'agenda.php') {
       <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
       <li class="nav-item"><a class="nav-link" href="usuarios.php">Usuários</a></li>
       <li class="nav-item"><a class="nav-link" href="pessoas.php">Pessoas</a></li>
+      <li class="nav-item"><a class="nav-link" href="pessoas-deletadas.php">Pessoas Deletadas</a></li>
     </ul>
 <?php } else { ?>
   <ul class="nav nav-tabs">
@@ -29,6 +30,7 @@ if ($current_file === 'usuarios.php') {
       <li class="nav-item"><a class="nav-link" href="agenda.php">Home</a></li>
       <li class="nav-item"><a class="nav-link active" href="#">Usuários</a></li>
       <li class="nav-item"><a class="nav-link" href="pessoas.php">Pessoas</a></li>
+      <li class="nav-item"><a class="nav-link" href="pessoas-deletadas.php">Pessoas Deletadas</a></li>
     </ul>
 <?php } else { ?>
   <ul class="nav nav-tabs">
@@ -46,10 +48,29 @@ if ($current_file === 'pessoas.php') {
       <li class="nav-item"><a class="nav-link" href="agenda.php">Home</a></li>
       <li class="nav-item"><a class="nav-link" href="usuarios.php">Usuários</a></li>
       <li class="nav-item"><a class="nav-link active" href="#">Pessoas</a></li>
+      <li class="nav-item"><a class="nav-link" href="pessoas-deletadas.php">Pessoas Deletadas</a></li>
     </ul>
 <?php } else { ?>
   <ul class="nav nav-tabs">
     <li class="nav-item"><a class="nav-link" href="agenda.php">Home</a></li>
     <li class="nav-item"><a class="nav-link active" href="#">Pessoas</a></li>
+  </ul>
+<?php } } ?>
+
+<?php
+// Pessoas deletadas
+if ($current_file === 'pessoas-deletadas.php') {
+  if ($tipo === 'admin') {
+?>
+    <ul class="nav nav-tabs">
+      <li class="nav-item"><a class="nav-link" href="agenda.php">Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="usuarios.php">Usuários</a></li>
+      <li class="nav-item"><a class="nav-link" href="pessoas.php">Pessoas</a></li>
+      <li class="nav-item"><a class="nav-link active" href="#">Pessoas Deletadas</a></li>
+    </ul>
+<?php } else { ?>
+  <ul class="nav nav-tabs">
+    <li class="nav-item"><a class="nav-link" href="agenda.php">Home</a></li>
+    <li class="nav-item"><a class="nav-link" href="pessoas.php">Pessoas</a></li>
   </ul>
 <?php } } ?>
