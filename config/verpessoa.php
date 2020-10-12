@@ -23,7 +23,7 @@ mysqli_close($conn);
 
 <body style="width: initial; height: initial; overflow: initial;">
   <header class="my-4 d-flex justify-content-between align-items-center">
-    <h2 class="h4 ml-4"><span><img src="../images/agenda.svg" alt="Logo" width="50" height="50" class="mb-1 mr-2"></span>Sistema de Agenda</h2>
+    <a href="../agenda.php" class="text-decoration-none" style="color: #212529;"><h2 class="h4 ml-4"><span><img src="../images/agenda.svg" alt="Logo" width="50" height="50" class="mb-1 mr-2"></span>Sistema de Agenda</h2></a>
     <ul class="mr-4 list-unstyled">
       <li class="d-inline mr-2">Olá <?php echo $_SESSION["user"]; ?>!</li>
       <li class="d-inline mr-1"><a href="../pessoas.php" class="btn btn-secondary">Voltar</a></li>
@@ -96,7 +96,7 @@ mysqli_close($conn);
         </svg>
         <h2 class="h4 text-center text-light m-0 ml-2 mb-1" style="font-size: 1.2em;">Localização de <?php echo $pessoa['nome']; ?></h2>
       </div>
-      <div id="map" class="w-100" style="position: relative; top: 50px; max-width: 1200px; height: 450px;"></div>
+      <div id="map" class="w-100" style="position: relative; top: 50px; max-width: 1200px; height: 450px; background-color: #EBEBEB;"><p class="text-center w-100 h-100 d-flex align-items-center justify-content-center">Mapa não disponível</p></div>
     </section>
     <div class="spacer w-100" style="height: 100px;"></div>
   </main>

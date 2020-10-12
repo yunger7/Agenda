@@ -73,7 +73,7 @@ mysqli_close($conn);
 
 <body style="width: initial; height: initial; overflow: initial;">
   <header class="my-4 d-flex justify-content-between align-items-center">
-    <h2 class="h4 ml-4"><span><img src="../images/agenda.svg" alt="Logo" width="50" height="50" class="mb-1 mr-2"></span>Sistema de Agenda</h2>
+    <a href="../agenda.php" class="text-decoration-none" style="color: #212529;"><h2 class="h4 ml-4"><span><img src="../images/agenda.svg" alt="Logo" width="50" height="50" class="mb-1 mr-2"></span>Sistema de Agenda</h2></a>
     <ul class="mr-4 list-unstyled">
       <li class="d-inline mr-2">Olá <?php echo $_SESSION["user"]; ?>!</li>
       <li class="d-inline mr-1"><a href="../pessoas.php" class="btn btn-secondary">Voltar</a></li>
