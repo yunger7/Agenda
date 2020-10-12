@@ -1,10 +1,5 @@
 <?php
-session_start();
 include('conecta.php');
-
-if ($_SESSION["status"] != "ok") {
-  header('location: ../index.php');
-}
 
 $idDeletar = $_GET['id'];
 

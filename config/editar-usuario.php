@@ -6,6 +6,10 @@ if ($_SESSION["status"] != "ok") {
   header('location: ../index.php');
 }
 
+if ($_SESSION["tipo"] != "admin") {
+  header("location: ../agenda.php");
+}
+
 $idEditar = $_GET['id'] ?? $_POST['id-editar'];
 
 // EDITAR REGISTRO

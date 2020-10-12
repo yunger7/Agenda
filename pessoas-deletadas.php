@@ -1,7 +1,12 @@
 <?php
 session_start();
+
 if ($_SESSION["status"] != "ok") {
   header('location: index.php');
+}
+
+if ($_SESSION["tipo"] != "admin") {
+  header("location: agenda.php");
 }
 ?>
 

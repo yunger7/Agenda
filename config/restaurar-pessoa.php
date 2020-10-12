@@ -6,6 +6,10 @@ if ($_SESSION["status"] != "ok") {
   header('location: index.php');
 }
 
+if ($_SESSION["tipo"] != "admin") {
+  header("location: ../agenda.php");
+}
+
 $idRestaurar = $_GET['id'];
 
 $res = mysqli_query($conn, "SELECT * FROM expessoa WHERE id = '$idRestaurar'");
