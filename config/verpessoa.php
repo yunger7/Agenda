@@ -44,46 +44,46 @@ mysqli_close($conn);
         <div class="form-row">
           <div class="form-group col-md-7">
             <label for="nome">Nome: </label>
-            <input type="text" name="nome" id="nome" class="form-control" value="<?php echo $pessoa['nome']; ?>" required>
+            <input type="text" name="nome" id="nome" class="form-control" value="<?php echo $pessoa['nome']; ?>" required readonly>
           </div>
           <div class="form-group col-md-5">
             <label for="email">Email: </label>
-            <input type="email" name="email" id="email" class="form-control" value="<?php echo $pessoa['email']; ?>" required>
+            <input type="email" name="email" id="email" class="form-control" value="<?php echo $pessoa['email']; ?>" required readonly>
           </div>
         </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="endereco">Endereço: </label>
-            <input type="text" name="endereco" id="endereco" class="form-control" value="<?php echo $pessoa['endereco']; ?>">
+            <input type="text" name="endereco" id="endereco" class="form-control" value="<?php echo $pessoa['endereco']; ?>" required readonly>
           </div>
           <div class="form-group col-md-4">
             <label for="cidade">Cidade: </label>
-            <input type="text" name="cidade" id="cidade" class="form-control" value="<?php echo $pessoa['cidade']; ?>">
+            <input type="text" name="cidade" id="cidade" class="form-control" value="<?php echo $pessoa['cidade']; ?>" required readonly>
           </div>
           <div class="form-group col-md-2">
             <label for="estado">Estado: </label>
-            <input type="text" name="estado" id="estado" class="form-control" value="<?php echo $pessoa['estado']; ?>">
+            <input type="text" name="estado" id="estado" class="form-control" value="<?php echo $pessoa['estado']; ?>" required readonly>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-7">
             <label for="celular">Celular: </label>
-            <input type="tel" name="celular" id="celular" class="form-control" value="<?php echo $pessoa['celular']; ?>" required>
+            <input type="tel" name="celular" id="celular" class="form-control" value="<?php echo $pessoa['celular']; ?>" required readonly>
           </div>
           <div class="form-group col-md-5">
             <label for="data-nascimento">Data de nascimento: </label>
-            <input type="date" name="data-nascimento" id="data-nascimento" class="form-control" value="<?php echo $pessoa['datanascimento']; ?>">
+            <input type="date" name="data-nascimento" id="data-nascimento" class="form-control" value="<?php echo $pessoa['datanascimento']; ?>" required readonly>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-7">
             <label for="profissao">Profissão: </label>
-            <input type="text" name="profissao" id="profissao" class="form-control" value="<?php echo $pessoa['profissao']; ?>">
+            <input type="text" name="profissao" id="profissao" class="form-control" value="<?php echo $pessoa['profissao']; ?>" required readonly>
           </div>
           <div class="form-group col-md-5">
             <label for="tipo" style="margin-bottom: 0.2em;">Tipo: </label>
-            <input type="text" id="tipo" class="form-control bg-white mb-2" value="<?php echo $pessoa['tipo']; ?>" disabled>
+            <input type="text" id="tipo" class="form-control mt-1" value="<?php echo $pessoa['tipo']; ?>" required readonly>
           </div>
         </div>
       </form>
