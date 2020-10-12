@@ -38,15 +38,15 @@ if ($_SESSION["status"] != "ok") {
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="endereco">Endereço: </label>
-          <input type="text" name="endereco" id="endereco" class="form-control">
+          <input type="text" name="endereco" id="endereco" class="form-control" required>
         </div>
         <div class="form-group col-md-4">
           <label for="cidade">Cidade: </label>
-          <input type="text" name="cidade" id="cidade" class="form-control">
+          <input type="text" name="cidade" id="cidade" class="form-control" required>
         </div>
         <div class="form-group col-md-2">
           <label for="estado">Estado: </label>
-          <input type="text" name="estado" id="estado" class="form-control">
+          <input type="text" name="estado" id="estado" class="form-control" required>
         </div>
       </div>
       <div class="form-row">
@@ -56,13 +56,13 @@ if ($_SESSION["status"] != "ok") {
         </div>
         <div class="form-group col-md-5">
           <label for="data-nascimento">Data de nascimento: </label>
-          <input type="date" name="data-nascimento" id="data-nascimento" class="form-control">
+          <input type="date" name="data-nascimento" id="data-nascimento" class="form-control" required>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-7">
           <label for="profissao">Profissão: </label>
-          <input type="text" name="profissao" id="profissao" class="form-control">
+          <input type="text" name="profissao" id="profissao" class="form-control" required>
         </div>
         <div class="form-group col-md-5">
           <label for="tipo">Tipo: </label>
