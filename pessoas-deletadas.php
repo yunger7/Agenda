@@ -56,7 +56,7 @@ if ($_SESSION["tipo"] != "admin") {
           </tr>
         </thead>
       </table>
-      <p class="text-center h5 mt-4">Não foram encontrados resultados para sua busca ＞﹏＜</p>
+      <p class="text-center h5 mt-4">Nenhuma pessoa foi excluida ＞﹏＜</p>
     <?php } else { ?>
       <!-- Existe resultados -->
       <table class="table table-hover text-center mb-0 border">
