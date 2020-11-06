@@ -8,7 +8,7 @@ Este sistema foi projetado para cadastrar, visualizar, editar e deletar dados de
 ---
 
 # ⚙️ Funcionamento da Aplicação
-## Login
+## Login :door:
 Para acessar o sistema, o usuário deve ser préviamente cadastrado. Um usuário pode cadastrar pessoas e outros usuários.
 
 ![Login](https://i.imgur.com/89QfNbE.gif)
