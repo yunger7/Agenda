@@ -42,4 +42,4 @@ Ao excluir uma pessoa, os dados são enviados para a lixeira, podendo ser restau
 * MySQL
 
 # :checkered_flag: Considerações finais
-O projeto apesar de ainda não estar finalizado já entrega grande parte dos requisitos iniciais. Sugestões, issues e pull requests são bem-vindos!
+Apesar de haver muito espaço para melhorias, o projeto já entrega grande parte dos requisitos iniciais. Sugestões, issues e pull requests são bem-vindos!
