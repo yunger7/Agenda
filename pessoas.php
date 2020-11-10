@@ -63,11 +63,7 @@ if ($_SESSION["status"] != "ok") {
         foreach ($alfabeto as $letra) {
           foreach ($iniciais as $inicial) {
             if ($inicial['letra'] == $letra) {
-              echo "
-                <li class='d-inline font-weight-bold'>
-                  <button type='submit' name='letra' value='$letra' id='move-up' class='btn btn-link text-decoration-none p-0 mb-1'>$letra</button>
-                </li>
-              ";
+              echo "<li class='d-inline font-weight-bold'><input type='submit' name='letra' value='$letra' id='move-up' class='btn btn-link text-decoration-none p-0 mb-1'></li>";
             }
           }
           $c = 0;
@@ -77,11 +73,7 @@ if ($_SESSION["status"] != "ok") {
             }
           }
           if ($c == count($iniciais)) {
-            echo "
-              <li class='d-inline'>
-                <a href='#' id='move-up' class='text-decoration-none text-secondary' style='cursor: default;'>$letra</a>
-              </li>
-            ";
+            echo "<li class='d-inline'><a href='#' id='move-up' class='text-decoration-none text-secondary' style='cursor: default;'>$letra</a></li>";
           }
           echo "<span class='text-info' style='cursor: default;'> | </span>";
         }
@@ -157,12 +149,12 @@ if ($_SESSION["status"] != "ok") {
           $letra = trim($_GET['letra']);
           $sql = "SELECT id, tipo, nome, celular, email FROM pessoa WHERE nome LIKE '$letra%' ";
           break;
-        case ($cases[0] !== "" && $cases[1] !== ""):
+        case ($cases[0] == "" && $cases[1] !== ""):
           // pesquisa por nome
           $nome = trim($_GET['nome-procurar']);
           $sql = "SELECT id, tipo, nome, celular, email FROM pessoa WHERE nome LIKE '%$nome%' ";
           break;
-        case ($cases[0] === "" && $cases[1] === ""):
+        case ($cases[0] == "" && $cases[1] == ""):
           // nome está vazio
           $sql = "SELECT id, tipo, nome, celular, email FROM pessoa ORDER BY nome";
           break;
