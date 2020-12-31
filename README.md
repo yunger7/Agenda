@@ -28,7 +28,7 @@ O sistema permite pesquisar por pessoas de duas formas: pelo nome, ou pela inici
 
 ![Página de pessoas](https://i.imgur.com/cSEBKBu.jpg)
 
-## Mapas
+## Mapas :world_map:
 Ao registrar um usuário com um endereço, um mapa com sua localização é mostrado na página de detalhes.
 
 ![Mapa](https://i.imgur.com/i7rcROs.jpg)
