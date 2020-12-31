@@ -11,6 +11,7 @@ $id = $_GET['id'];
 $sql = "SELECT * FROM pessoa WHERE id = '$id'";
 $resultado = mysqli_query($conn, $sql);
 $pessoa = mysqli_fetch_array($resultado, MYSQLI_ASSOC);
+$enderecoCompleto = $pessoa['endereco'] . ' ' . $pessoa['cidade'] . ' ' . $pessoa['estado'] . ' Brasil';
 
 // LIBERAR MEMORIA
 mysqli_free_result($resultado);
@@ -96,39 +97,66 @@ mysqli_close($conn);
         </svg>
         <h2 class="h4 text-center text-light m-0 ml-2 mb-1" style="font-size: 1.2em;">Localização de <?php echo $pessoa['nome']; ?></h2>
       </div>
-      <div id="map" class="w-100" style="position: relative; top: 50px; max-width: 1200px; height: 450px; background-color: #EBEBEB;"><p class="text-center w-100 h-100 d-flex align-items-center justify-content-center">Mapa não disponível</p></div>
+      <div id="map" class="w-100" style="position: relative; top: 50px; max-width: 1200px; height: 450px; background-color: #EBEBEB;">
+        <!-- <p class="text-center w-100 h-100 d-flex align-items-center justify-content-center">Mapa não disponível</p> -->
+      </div>
     </section>
     <div class="spacer w-100" style="height: 100px;"></div>
   </main>
   <?php include('../templates/footer.php'); ?>
+  <script>
+    // Get environment variables
+    <?php
+    require_once realpath(__DIR__ . "/../vendor/autoload.php");
+    use Dotenv\Dotenv;
 
-  <!-- Geocoding -->
-  <!-- <script src="https://maps.googleapis.com/maps/api/geocode/json?address=<?php echo $pessoa['endereco']; ?>+<?php echo $pessoa['estado']; ?>+<?php echo $pessoa['estado']; ?>&components=country:BR
-&key=API_KEY"></script> -->
+    $dotenv = Dotenv::createImmutable(__DIR__ . "/../");
+    $dotenv->load();
+    ?>
 
-  <!-- Google Maps API -->
-  <!-- <script>
-    function initMap() {
-      var location = {
-        lat: -25.344,
-        lng: 131.036
-      };
-
-      var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
-        center: location
-      });
-
-      var marker = new google.maps.Marker({
-        position: location,
-        map: map
-      });
+    const geolocation = async () => {
+      // Geocoding
+      const response = await fetch('https://us1.locationiq.com/v1/search.php?key=<?php echo $_ENV['API_KEY']; ?>&q=<?php echo rawurlencode($enderecoCompleto); ?>&limit=1&accept-language=pt-br&format=json');
+      const data = await response.json();
+      return data;
     }
+    geolocation().then(data => {
+      console.log(data[0].lat, data[0].lon);
+      // Create map
+      locationiq.key = "<?php echo $_ENV['API_KEY']; ?>";
+
+      var map = new mapboxgl.Map({
+        container: 'map',
+        attributionControl: false,
+        zoom: 12,
+        center: [data[0].lon, data[0].lat]
+      });
+
+      var layerStyles = {
+        "Streets": "streets/vector",
+        "Satellite": "earth/raster",
+        "Hybrid": "hybrid/vector",
+        "Dark": "dark/vector",
+        "Light": "light/vector"
+      };
+              
+      map.addControl(new locationiqLayerControl({
+        key: locationiq.key,
+        layerStyles: layerStyles
+      }), 'top-left');
+
+      var el2 = document.createElement('div');
+      el2.className = 'marker';
+      el2.style.backgroundImage = 'url(../images/marker.png)';
+      el2.style.width = '50px';
+      el2.style.height = '50px';
+
+      new mapboxgl.Marker(el2)
+        .setLngLat([data[0].lon, data[0].lat])
+        .addTo(map)
+    });
+    
   </script>
-
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=API_KEY(Tirei minha API Key, mas estava funcionando corretamente)&callback=initMap" type="text/javascript"></script> -->
-
-
 </body>
 
 </html>

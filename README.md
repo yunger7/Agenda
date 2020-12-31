@@ -28,6 +28,11 @@ O sistema permite pesquisar por pessoas de duas formas: pelo nome, ou pela inici
 
 ![Página de pessoas](https://i.imgur.com/cSEBKBu.jpg)
 
+## Mapas
+Ao registrar um usuário com um endereço, um mapa com sua localização é mostrado na página de detalhes.
+
+![Mapa](https://i.imgur.com/i7rcROs.jpg)
+
 ## Lixeira :wastebasket:
 Ao excluir uma pessoa, os dados são enviados para a lixeira, podendo ser restaurados ou excluídos permanentemente.
 
@@ -42,4 +47,4 @@ Ao excluir uma pessoa, os dados são enviados para a lixeira, podendo ser restau
 * MySQL
 
 # :checkered_flag: Considerações finais
-Apesar de haver muito espaço para melhorias, o projeto já entrega grande parte dos requisitos iniciais. Sugestões, issues e pull requests são bem-vindos!
+O projeto apesar de ainda não estar finalizado já entrega grande parte dos requisitos iniciais. Sugestões, issues e pull requests são bem-vindos!
