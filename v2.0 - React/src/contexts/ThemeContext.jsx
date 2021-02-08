@@ -3,7 +3,8 @@ import { ThemeProvider, createMuiTheme } from '@material-ui/core';
 const theme = createMuiTheme({
   typography: {
     h1: {
-      textAlign: 'center'
+      textAlign: 'center',
+      fontSize: '36px'
     }
   }
 });
