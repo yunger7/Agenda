@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import 'fontsource-roboto';
 
@@ -7,12 +7,17 @@ import 'fontsource-roboto';
 // components
 import Login from './components/Login';
 import Signup from './components/Signup';
+import Home from './components/Home';
 
 // contexts
 import { AuthContext } from './contexts/AuthContext';
 
 function App() {
   const { user, authLoading, authError } = useContext(AuthContext);
+
+  useEffect(() => {
+    console.log(user);
+  }, [user])
 
   if (authLoading) {
     return (
@@ -34,7 +39,7 @@ function App() {
   if (user) {
     return (
       <div className="App">
-        <h3>Welcome!</h3>
+        <Home />
       </div>
     )
   }

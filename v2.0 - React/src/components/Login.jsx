@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Link } from 'react-router-dom';
+
+// MUI
 import {
 	Container,
 	Grid,
@@ -9,6 +11,9 @@ import {
 	Button,
 } from "@material-ui/core";
 import { AccountCircle } from "@material-ui/icons";
+
+// Contexts
+import { AuthContext } from '../contexts/AuthContext';
 
 const useStyles = makeStyles({
 	wrapper: {
@@ -37,6 +42,17 @@ const Login = () => {
 	const classes = useStyles();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const { user, login } = useContext(AuthContext);
+
+	const handleSubmit = (event) => {
+		console.log('submit form');
+		event.preventDefault();
+		login(email, password);
+	}
+
+	useEffect(() => {
+		console.log(user);
+	}, [user])
 
 	return (
 		<Container component="main" maxWidth="sm">
@@ -48,7 +64,7 @@ const Login = () => {
 			>
 				<AccountCircle style={{ fontSize: 45 }} />
 				<Typography variant="h1">Sistema de agenda</Typography>
-				<form className={classes.form}>
+				<form className={classes.form} onSubmit={handleSubmit}>
 					<TextField
 						type="email"
 						label="Email"
@@ -66,6 +82,7 @@ const Login = () => {
             onChange={e => setPassword(e.target.value)}
 					/>
 					<Button
+						type="submit"
 						variant="contained"
 						color="primary"
 						size="medium"
