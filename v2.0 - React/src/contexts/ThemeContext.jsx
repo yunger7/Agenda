@@ -9,7 +9,7 @@ const theme = createMuiTheme({
   }
 });
 
-const ThemeContext = ({ children }) => {
+const ThemeContextProvider = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
       { children }
@@ -17,4 +17,4 @@ const ThemeContext = ({ children }) => {
   )
 }
 
-export default ThemeContext;
+export default ThemeContextProvider;
