@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from 'react-router-dom';
 import {
 	Container,
 	Grid,
@@ -11,7 +12,7 @@ import { AccountCircle } from "@material-ui/icons";
 
 const useStyles = makeStyles({
 	wrapper: {
-		marginTop: "10%",
+		marginTop: "20%",
 	},
 	form: {
 		width: "60%",
@@ -27,12 +28,16 @@ const useStyles = makeStyles({
 		width: "75%",
 		marginTop: "1rem",
 	},
+	link: {
+		marginTop: '1rem'
+	}
 });
 
-const SignIn = () => {
+const Signup = () => {
 	const classes = useStyles();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
 
 	return (
 		<Container component="main" maxWidth="sm">
@@ -42,7 +47,7 @@ const SignIn = () => {
 				alignItems="center"
 				className={classes.wrapper}
 			>
-				<AccountCircle fontSize="large" />
+				<AccountCircle style={{ fontSize: 45 }} />
 				<Typography variant="h1">Sistema de agenda</Typography>
 				<form className={classes.form}>
 					<TextField
@@ -61,18 +66,27 @@ const SignIn = () => {
             value={password}
             onChange={e => setPassword(e.target.value)}
 					/>
+					<TextField
+						type="password"
+						label="Confirme sua senha"
+						required
+						className={classes.input}
+            value={passwordConfirm}
+            onChange={e => setPasswordConfirm(e.target.value)}
+					/>
 					<Button
 						variant="contained"
 						color="primary"
 						size="medium"
 						className={classes.button}
 					>
-						Entrar
+						Cadastrar
 					</Button>
 				</form>
+				<Link to="/login" className={classes.link}>Já possui uma conta? Log in</Link>
 			</Grid>
 		</Container>
 	);
 };
 
-export default SignIn;
+export default Signup;

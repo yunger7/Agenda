@@ -2,6 +2,7 @@ html, body, #root, .App {
   margin: 0;
   height: 100%;
   max-height: 100%;
+  overflow: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {

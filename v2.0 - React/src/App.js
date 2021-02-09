@@ -1,10 +1,12 @@
-import 'fontsource-roboto';
 import { useContext } from 'react';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import 'fontsource-roboto';
 
 // MUI
 
 // components
-import SignIn from './components/SignIn';
+import Login from './components/Login';
+import Signup from './components/Signup';
 
 // contexts
 import { AuthContext } from './contexts/AuthContext';
@@ -38,9 +40,19 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <SignIn />
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/signup">
+            <Signup />
+          </Route>
+          <Redirect from="/" to="/login" />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
