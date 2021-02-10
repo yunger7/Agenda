@@ -1,15 +1,16 @@
 import { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthContext';
 
-import { Button } from '@material-ui/core';
+// components
+import Header from './Header';
 
 const Home = () => {
-  const { user, logout } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   return (
     <>
+      <Header />
       <h1>Bem-vindo { user.displayName } 👋</h1>
-      <Button variant="outlined" color="secondary" onClick={logout}>Sair</Button>
     </>
   );
 }
