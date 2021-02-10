@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { Link } from 'react-router-dom';
 
 // MUI
@@ -42,17 +42,12 @@ const Login = () => {
 	const classes = useStyles();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const { user, login } = useContext(AuthContext);
+	const { login } = useContext(AuthContext);
 
 	const handleSubmit = (event) => {
-		console.log('submit form');
 		event.preventDefault();
 		login(email, password);
 	}
-
-	useEffect(() => {
-		console.log(user);
-	}, [user])
 
 	return (
 		<Container component="main" maxWidth="sm">

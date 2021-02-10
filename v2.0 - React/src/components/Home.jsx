@@ -8,8 +8,7 @@ const Home = () => {
 
   return (
     <>
-      <h1>Welcome</h1>
-      <p>Logged in as { user.email }</p>
+      <h1>Bem-vindo { user.displayName } 👋</h1>
       <Button variant="outlined" color="secondary" onClick={logout}>Sair</Button>
     </>
   );

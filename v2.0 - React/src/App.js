@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import 'fontsource-roboto';
 
@@ -14,10 +14,6 @@ import { AuthContext } from './contexts/AuthContext';
 
 function App() {
   const { user, authLoading, authError } = useContext(AuthContext);
-
-  useEffect(() => {
-    console.log(user);
-  }, [user])
 
   if (authLoading) {
     return (
